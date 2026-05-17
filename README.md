@@ -116,6 +116,36 @@ K-Means achieved the best performance across all metrics.
 
 Among the SOM experiments, the 5x5 map performed better than the larger 10x10 and 20x20 maps.
 
+## Visualization Results
+
+### 1. True Labels PCA Plot
+
+![True Labels PCA Plot](outputs/som_5x5/true_labels_pca_plot.png)
+
+This plot shows the actual malignant and benign labels projected into 2D space using PCA.  
+It is used as a reference visualization to compare how well each clustering method aligns with the true labels.
+
+### 2. K-Means Clustering Result
+
+![K-Means PCA Plot](outputs/som_5x5/kmeans_pca_plot.png)
+
+This plot shows the clusters produced by K-Means.  
+Compared with the true labels, K-Means produces a clearer separation between the two groups, which matches its higher ARI, NMI, and Purity scores.
+
+### 3. Kohonen SOM Clustering Result
+
+![SOM PCA Plot](outputs/som_5x5/som_pca_plot.png)
+
+This plot shows the clustering result from the Kohonen SOM-based pipeline.  
+The SOM clusters are more mixed compared with K-Means, which is consistent with the lower clustering metrics.
+
+### 4. SOM U-Matrix
+
+![SOM U-Matrix](outputs/som_5x5/som_umatrix.png)
+
+The U-Matrix visualizes distances between neighboring neurons in the SOM map.  
+Regions with larger distances can indicate possible boundaries between groups, making SOM useful for exploring the topology of high-dimensional data.
+
 ## Result Interpretation
 
 The results show that increasing the SOM map size does not always improve clustering performance.
