@@ -164,42 +164,6 @@ In this experiment:
 
 This suggests that K-Means is more suitable for this dataset in terms of clustering performance, while SOM is still useful for visualization and understanding the data topology through the SOM U-Matrix.
 
-## Visualization Outputs
-
-The project saves several visualization files:
-
-```text
-true_labels_pca_plot.png
-kmeans_pca_plot.png
-som_pca_plot.png
-som_umatrix.png
-```
-
-### True Labels PCA Plot
-
-This plot shows the actual malignant/benign labels after reducing the feature space to 2D using PCA.
-
-It is used as a reference or ground truth visualization.
-
-### K-Means PCA Plot
-
-This plot shows the clusters discovered by K-Means on the PCA space.
-
-The K-Means clusters are more similar to the true label distribution, which matches the higher ARI, NMI, and Purity values.
-
-### SOM PCA Plot
-
-This plot shows the clusters produced by the SOM-based pipeline.
-
-Compared with K-Means, the SOM clusters are less clearly separated in this dataset.
-
-### SOM U-Matrix
-
-The U-Matrix is a visualization specific to SOM.
-
-It shows distances between neighboring neurons on the SOM map.  
-Higher distances may indicate boundaries between different regions of the data.
-
 ## How to Run
 
 ```powershell
@@ -219,7 +183,7 @@ python main.py
 ## Project Structure
 
 ```text
-ML_KMEAN_KOHONEN/
+ml_breast_cancer_kmean_kohonen/
 ├── data/
 │   └── breast_cancer.csv
 ├── outputs/
@@ -257,3 +221,30 @@ SOM provides useful visualization through the 2D neuron map and U-Matrix, but it
 The experiment shows that increasing SOM map size does not guarantee better clustering performance. For this dataset, a smaller 5x5 SOM map is more suitable than larger 10x10 or 20x20 maps.
 
 Overall, K-Means is more effective for clustering this dataset, while SOM is useful for exploring and visualizing the structure of high-dimensional data.
+
+## Example Metrics Output
+
+A full metrics file is saved automatically after running the experiment:
+
+```text
+outputs/som_5x5/metrics.json
+outputs/som_10x10/metrics.json
+outputs/som_20x20/metrics.json
+```
+
+```json
+{
+  "kmeans": {
+    "silhouette_score": 0.3268,
+    "adjusted_rand_index": 0.7354,
+    "normalized_mutual_info": 0.6188,
+    "purity": 0.9298
+  },
+  "kohonen_som_5x5": {
+    "silhouette_score": 0.1096,
+    "adjusted_rand_index": 0.2179,
+    "normalized_mutual_info": 0.1944,
+    "purity": 0.7368
+  }
+}
+```
