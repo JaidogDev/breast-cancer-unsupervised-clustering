@@ -1,0 +1,43 @@
+{
+    "project": "Breast Cancer Clustering: K-Means vs Kohonen SOM",
+    "dataset": {
+        "name": "Breast Cancer Wisconsin Diagnostic",
+        "source": "sklearn.datasets.load_breast_cancer",
+        "instances": 569,
+        "features": 30,
+        "classes": [
+            "malignant",
+            "benign"
+        ],
+        "note": "Labels are not used during clustering. Labels are used only for evaluation."
+    },
+    "split": {
+        "train_samples": 455,
+        "test_samples": 114,
+        "test_size": 0.2,
+        "random_state": 42
+    },
+    "models": {
+        "kmeans": {
+            "n_clusters": 2,
+            "metrics": {
+                "silhouette_score": 0.32680772358202004,
+                "adjusted_rand_index": 0.7353808445227874,
+                "normalized_mutual_info": 0.6188096305951326,
+                "purity": 0.9298245614035088
+            }
+        },
+        "kohonen_som": {
+            "map_size": "10x10",
+            "sigma": 1.0,
+            "learning_rate": 0.5,
+            "num_iteration": 1000,
+            "metrics": {
+                "silhouette_score": 0.02301191831521706,
+                "adjusted_rand_index": -0.010218033273343396,
+                "normalized_mutual_info": 0.001775460722502879,
+                "purity": 0.631578947368421
+            }
+        }
+    }
+}
